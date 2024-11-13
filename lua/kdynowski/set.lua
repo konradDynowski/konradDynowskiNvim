@@ -12,3 +12,4 @@ vim.opt.scrolloff = 12
 vim.opt.updatetime = 50
 
 vim.g.leaderkey = " "
+

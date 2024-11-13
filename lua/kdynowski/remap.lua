@@ -12,3 +12,15 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "<leader>y", "\"+y")
 vim.keymap.set("v", "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>Y", "\"+Y")
+
+
+-- disable mouse
+vim.opt.mouse = ""
+
+-- autozz
+vim.keymap.set("i", "<Esc>", "<Esc>zz")
+vim.keymap.set("v", "<Esc>", "<Esc>zz")
+vim.keymap.set("n", "<Esc>", "<Esc>zz")
+
+-- enter visual block without conflict with windows paste
+vim.keymap.set("n", "<leader>v", "<C-v>")
