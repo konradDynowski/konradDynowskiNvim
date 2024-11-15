@@ -56,19 +56,81 @@ require("lspconfig").pylsp.setup{
     }
 }
 
-local cmp = require('cmp')
 
-cmp.setup({
-	sources = {
-		{name = 'nvim_lsp'},
-	},
-	snippet = {
-		expand = function(args)
-			-- You need Neovim v0.10 to use vim.snippet
-			vim.snippet.expand(args.body)
-		end,
-	},
-	mapping = cmp.mapping.preset.insert({
-		['<CR>'] = cmp.mapping.confirm({select = true }), 
-	}),
+require("lspconfig").eslint.setup({
+  settings = {
+    codeAction = {
+      disableRuleComment = {
+        enable = true,
+        location = "separateLine"
+      },
+      showDocumentation = {
+        enable = true
+      }
+    },
+    codeActionOnSave = {
+      enable = false,
+      mode = "all"
+    },
+    experimental = {
+      useFlatConfig = false
+    },
+    format = true,
+    nodePath = "",
+    onIgnoredFiles = "off",
+    problems = {
+      shortenToSingleLine = false
+    },
+    quiet = false,
+    rulesCustomizations = {},
+    run = "onType",
+    useESLintClass = false,
+    validate = "on",
+    workingDirectory = {
+      mode = "location"
+    }
+  },
+  root_dit = require("lspconfig.util").root_pattern(".eslintrc.js",".git"),
+  on_attach = function(client, bufnr)
+    -- Optional: Autoformat on save
+    if client.server_capabilities.documentFormattingProvider then
+      vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
+    end
+  end,
 })
+
+local cmp = require('cmp')
+-- Setup nvim-cmp for autocompletion
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body)  -- Replace this with vim.snippet.expand for Neovim 0.10+
+    end,
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<C-Space>'] = cmp.mapping.complete(),
+  }),
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'buffer' },
+    { name = 'path' },
+  }
+})
+-- cmp.setup({
+-- 	sources = {
+-- 		{name = 'nvim_lsp'},
+-- 		{name = 'buffer'},
+-- 		{name = 'path'},
+-- 	},
+-- 	snippet = {
+-- 		expand = function(args)
+-- 			-- You need Neovim v0.10 to use vim.snippet
+-- 			vim.snippet.expand(args.body)
+-- 		end,
+-- 	},
+-- 	mapping = cmp.mapping.preset.insert({
+-- 		['<CR>'] = cmp.mapping.confirm({select = true }), 
+-- 		['<C-Space>'] = cmp.mapping.complete(), 
+-- 	}),
+-- })
