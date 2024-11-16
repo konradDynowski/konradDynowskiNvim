@@ -57,3 +57,21 @@ vim.keymap.set("n", "<C-l>", function() harpoon:list():select(4) end)
 vim.keymap.set("n", "<C-Right>", function() harpoon:list():next() end)
 vim.keymap.set("n", "<C-Left>", function() harpoon:list():prev() end)
 
+-- autoclosing
+vim.keymap.set("i", "\"", "\"\"<Left>", { desc = "Autoclose double quotes" })
+vim.keymap.set("i", "'", "''<Left>", { desc = "Autoclose single quotes" })
+vim.keymap.set("i", "(", "()<Left>", { desc = "Autoclose parentheses" })
+vim.keymap.set("i", "[", "[]<Left>", { desc = "Autoclose square brackets" })
+vim.keymap.set("i", "{", "{}<Left>", { desc = "Autoclose curly braces" })
+vim.keymap.set("i", "<", "<><Left>", { desc = "Autoclose triangular braces" })
+
+-- works ok for single line input, which is fine for me!
+vim.keymap.set("v", "\"", "c\"\"<Left><Esc>pgv", { desc = "Envelope selection with double quotes" })
+vim.keymap.set("v", "'", "c''<Left><Esc>pgv", { desc = "Envelope selection with single quotes" })
+vim.keymap.set("v", "(", "c()<Left><Esc>pgv", { desc = "Envelope selection with parentheses" })
+vim.keymap.set("v", "[", "c[]<Left><Esc>pgv", { desc = "Envelope selection with square brackets" })
+vim.keymap.set("v", "{", "c{}<Left><Esc>pgv", { desc = "Envelope selection with curly braces" })
+vim.keymap.set("v", "<", "c<><Left><Esc>pgv", { desc = "Envelope selection with triangular braces" })
+
+
+

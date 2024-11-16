@@ -17,3 +17,16 @@ vim.opt.tabstop = 2       -- Number of spaces per tab
 vim.opt.softtabstop = 2   -- Number of spaces per tab when editing
 vim.opt.smartindent = true  -- Enable smart indent
 vim.opt.autoindent = true   -- Copy indent from the current line when creating
+
+vim.g.clipboard = {
+  name = "win32yank-wsl",
+  copy = {
+    ["+"] = "win32yank.exe -i --crlf",
+    ["*"] = "win32yank.exe -i --crlf",
+  },
+  paste = {
+    ["+"] = "win32yank.exe -o --lf",
+    ["*"] = "win32yank.exe -o --lf",
+  },
+  cache_enabled = false,
+}
