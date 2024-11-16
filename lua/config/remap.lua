@@ -57,5 +57,3 @@ vim.keymap.set("n", "<C-l>", function() harpoon:list():select(4) end)
 vim.keymap.set("n", "<C-Right>", function() harpoon:list():next() end)
 vim.keymap.set("n", "<C-Left>", function() harpoon:list():prev() end)
 
--- formatting based on lsp attached
-vim.keymap.set("n", "<leader>fm", function() vim.lsp.buf.format { async = true } end)
