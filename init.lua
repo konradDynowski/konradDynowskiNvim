@@ -1,2 +1,5 @@
 require("config.lazy")
+require("config.harpoon")
 require("config.remap")
+require("config.onedark")
+require("config.set")

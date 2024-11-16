@@ -42,3 +42,20 @@ local builtin_tel = require('telescope.builtin')
 vim.keymap.set('n', '<leader>pf', builtin_tel.find_files, { desc = 'Telescope find files' })
 vim.keymap.set('n', '<C-p>', builtin_tel.git_files, { desc = 'Telescope help tags' })
 vim.keymap.set("n", "<leader>ps", builtin_tel.live_grep, { desc = "Grep on roids" })
+
+-- harpoon
+local harpoon = require("harpoon")
+
+vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
+vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+
+vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
+vim.keymap.set("n", "<C-j>", function() harpoon:list():select(2) end)
+vim.keymap.set("n", "<C-k>", function() harpoon:list():select(3) end)
+vim.keymap.set("n", "<C-l>", function() harpoon:list():select(4) end)
+
+vim.keymap.set("n", "<C-Right>", function() harpoon:list():next() end)
+vim.keymap.set("n", "<C-Left>", function() harpoon:list():prev() end)
+
+-- formatting based on lsp attached
+vim.keymap.set("n", "<leader>fm", function() vim.lsp.buf.format { async = true } end)
