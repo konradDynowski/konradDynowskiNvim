@@ -1,4 +1,2 @@
-require("kdynowski")
-require("kdynowski.remap")
-require("kdynowski.packer")
-
+require("config.lazy")
+require("config.remap")
