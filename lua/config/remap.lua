@@ -73,5 +73,9 @@ vim.keymap.set("v", "[", "c[]<Left><Esc>pgv", { desc = "Envelope selection with 
 vim.keymap.set("v", "{", "c{}<Left><Esc>pgv", { desc = "Envelope selection with curly braces" })
 vim.keymap.set("v", "<", "c<><Left><Esc>pgv", { desc = "Envelope selection with triangular braces" })
 
-
+-- lsp related stuff
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]"})
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
 
